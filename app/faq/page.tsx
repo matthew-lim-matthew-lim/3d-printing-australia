@@ -11,7 +11,7 @@ const faqs: [string, React.ReactNode][] = [
 ];
 export default function Faq() {
   return (
-    <div className="wrap section legal">
+    <div className="wrap page legal">
       <h1>Frequently asked questions</h1>
       {faqs.map(([q, a]) => (
         <details key={q} className="faq"><summary>{q}</summary><p>{a}</p></details>

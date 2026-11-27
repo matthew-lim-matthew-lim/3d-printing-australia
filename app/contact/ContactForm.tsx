@@ -24,7 +24,7 @@ export default function ContactForm() {
         </select>
       </label>
       <label>Message<textarea name="message" rows={5} required /></label>
-      <button className="btn btn-primary btn-lg" type="submit">Send message</button>
+      <button className="btn btn-cart btn-lg" type="submit">Send message</button>
       {sent && <p className="green small">Your email app should now be open with the message ready to send.</p>}
     </form>
   );

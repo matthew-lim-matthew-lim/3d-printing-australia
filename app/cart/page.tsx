@@ -30,19 +30,19 @@ export default function CartPage() {
     }
   };
 
-  if (!ready) return <div className="wrap section"><h1>Your cart</h1><p className="muted">Loading…</p></div>;
+  if (!ready) return <div className="wrap page"><h1 className="page-h">Shopping Cart</h1><p className="muted">Loading…</p></div>;
   if (!lines.length)
     return (
-      <div className="wrap section empty">
+      <div className="wrap page empty">
         <h1>Your cart is empty</h1>
         <p>Black Friday prices won&apos;t last. Find your next printer.</p>
-        <Link href="/black-friday" className="btn btn-primary btn-lg">Shop the sale</Link>
+        <Link href="/black-friday" className="btn btn-cart btn-lg">Shop the sale</Link>
       </div>
     );
 
   return (
-    <div className="wrap section">
-      <h1>Your cart</h1>
+    <div className="wrap page">
+      <h1 className="page-h">Shopping Cart</h1>
       <div className="cart">
         <div className="cart-lines">
           {lines.map(({ slug, qty, product: p }) => (
@@ -70,12 +70,12 @@ export default function CartPage() {
           <div className="sum-row"><span>Shipping</span><span>{free ? "FREE" : `From ${aud(siteConfig.standardShipping)}`}</span></div>
           {!free && <p className="muted small">Add {aud(siteConfig.freeShippingThreshold - subtotal)} more for free shipping.</p>}
           <div className="sum-row total"><span>Total (inc. GST)</span><span>{aud(subtotal + (free ? 0 : siteConfig.standardShipping))}</span></div>
-          <button className="btn btn-primary btn-lg btn-block" onClick={checkout} disabled={loading} data-testid="checkout">
+          <button className="btn btn-cart btn-lg btn-block" onClick={checkout} disabled={loading} data-testid="checkout">
             {loading ? "Redirecting to secure checkout…" : "Proceed to secure checkout"}
           </button>
           {error && <p className="error" role="alert">{error}</p>}
-          <p className="muted small center">🔒 You&apos;ll enter payment details on Stripe&apos;s secure page. We never see or store your card number.</p>
-          <Link href="/shop" className="link-btn center-block">← Continue shopping</Link>
+          <p className="muted small center">You&apos;ll enter payment details on Stripe&apos;s secure page. We never see or store your card number.</p>
+          <Link href="/shop" className="link-btn center-block">Continue shopping</Link>
         </aside>
       </div>
     </div>

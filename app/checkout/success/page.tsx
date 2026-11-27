@@ -18,15 +18,15 @@ export default async function Success({ searchParams }: { searchParams: Promise<
   }
   if (!s || s.payment_status !== "paid") {
     return (
-      <div className="wrap section empty">
+      <div className="wrap page empty">
         <h1>We couldn&apos;t find that order</h1>
         <p>If you were charged, please contact us with your email address and we&apos;ll sort it out.</p>
-        <Link href="/contact" className="btn btn-primary">Contact us</Link>
+        <Link href="/contact" className="btn btn-cart">Contact us</Link>
       </div>
     );
   }
   return (
-    <div className="wrap section confirm">
+    <div className="wrap page confirm">
       <ClearCart />
       <div className="confirm-tick">✓</div>
       <h1>Thanks for your order!</h1>
@@ -37,7 +37,7 @@ export default async function Success({ searchParams }: { searchParams: Promise<
         <div className="sum-row total"><span>Total paid</span><span>{aud((s.amount_total ?? 0) / 100)}</span></div>
       </div>
       <p className="muted">We&apos;ll email tracking details as soon as your order ships.</p>
-      <Link href="/shop" className="btn btn-primary btn-lg">Continue shopping</Link>
+      <Link href="/shop" className="btn btn-cart btn-lg">Continue shopping</Link>
     </div>
   );
 }

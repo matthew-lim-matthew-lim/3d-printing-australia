@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useCart } from "@/lib/cart";
+import { IconCart } from "./Icons";
 
 export default function AddToCartButton({ slug, small, withQty }: { slug: string; small?: boolean; withQty?: boolean }) {
   const { add } = useCart();
@@ -20,8 +21,8 @@ export default function AddToCartButton({ slug, small, withQty }: { slug: string
           <button type="button" onClick={() => setQty((q) => Math.min(10, q + 1))} aria-label="Increase quantity">+</button>
         </div>
       )}
-      <button type="button" className={`btn btn-primary ${small ? "btn-sm" : "btn-lg"}`} onClick={click} data-testid="add-to-cart">
-        {done ? "✓ Added" : "Add to cart"}
+      <button type="button" className={`btn btn-cart ${small ? "btn-sm" : "btn-lg"}`} onClick={click} data-testid="add-to-cart">
+        <IconCart /> {done ? "Added" : "Add to Cart"}
       </button>
     </div>
   );

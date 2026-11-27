@@ -3,7 +3,7 @@ import ContactForm from "./ContactForm";
 export const metadata = { title: "Contact us" };
 export default function Contact() {
   return (
-    <div className="wrap section">
+    <div className="wrap page">
       <h1>Contact us</h1>
       <div className="contact">
         <div className="contact-info">

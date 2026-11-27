@@ -3,22 +3,23 @@ import { Product, aud, discountPct } from "@/lib/products";
 import ProductImage from "./ProductImage";
 import AddToCartButton from "./AddToCartButton";
 
+export const sku = (p: Product) => p.slug.toUpperCase().replace(/-/g, "").slice(0, 14);
+
 export default function ProductCard({ p }: { p: Product }) {
   return (
     <article className="card">
       <Link href={`/product/${p.slug}`} className="card-img">
-        <span className="badge-sale">-{discountPct(p)}%</span>
+        <span className="badge-sale">SAVE {discountPct(p)}%</span>
         <ProductImage product={p} />
       </Link>
       <div className="card-body">
-        <div className="card-brand">{p.brand}</div>
-        <Link href={`/product/${p.slug}`} className="card-title">{p.name}</Link>
-        <p className="card-sum">{p.summary}</p>
-        <div className="price-row">
+        <Link href={`/product/${p.slug}`} className="card-title">{p.brand} {p.name} 3D Printer</Link>
+        <div className="card-sku">SKU: {sku(p)}</div>
+        <div className={`avail ${p.stock < 10 ? "low" : ""}`}><i />{p.stock < 10 ? `Low stock (${p.stock})` : "In stock"}</div>
+        <div className="card-price">
+          <span className="was">Was {aud(p.rrp)}</span>
           <span className="price">{aud(p.price)}</span>
-          <s className="rrp">RRP {aud(p.rrp)}</s>
         </div>
-        <div className="save">Save {aud(p.rrp - p.price)}</div>
         <AddToCartButton slug={p.slug} small />
       </div>
     </article>
